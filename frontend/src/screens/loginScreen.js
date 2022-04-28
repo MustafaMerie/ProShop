@@ -23,10 +23,9 @@ const LoginScreen = () => {
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
-      console.log(userInfo);
-    // if (userInfo) {
-    //     navigate(redirect) 
-    // }
+    if (userInfo) {
+      navigate(redirect) 
+    }
   }, [navigate, userInfo, redirect])
 
   const submitHandler = (e) => {

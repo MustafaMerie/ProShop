@@ -22,13 +22,15 @@ const RegisterScreen = () => {
   const userRegister = useSelector((state) => state.userRegister)
   const { loading, error, userInfo } = userRegister
 
+  const userLogin = useSelector((state) => state.userLogin)
+
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
-    // if (userInfo) {
-    //     navigate(redirect)
-    // }
-  }, [userInfo, redirect])
+    if (userLogin.userInfo) {
+      navigate(redirect) 
+    }
+  }, [navigate, userLogin.userInfo, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault()
