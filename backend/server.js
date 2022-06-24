@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import productRoutes from './routers/productRoutes.js'
 import userRoutes from './routers/userRoutes.js'
+import orderRoutes from './routers/orderRoutes.js'
 
 dotenv.config()
 connectDB()
@@ -15,6 +16,7 @@ res.send ('API is running....')
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/orders', orderRoutes)
 
 const PORT = process.env.PORT || 5000
 app. listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
