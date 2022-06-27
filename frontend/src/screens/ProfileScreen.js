@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Form, Button, Row, Col } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
-// import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
-// import { listMyOrders } from '../actions/orderActions'
+import { listMyOrders } from '../actions/orderActions'
 // import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 const ProfileScreen = ({ location, history }) => {
@@ -29,8 +29,8 @@ const ProfileScreen = ({ location, history }) => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
-//   const orderListMy = useSelector((state) => state.orderListMy)
-//   const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
+  const orderListMy = useSelector((state) => state.orderListMy)
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
   useEffect(() => {
     if (!userInfo) {
@@ -39,7 +39,7 @@ const ProfileScreen = ({ location, history }) => {
       if (!user.name) {
         // dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(getUserDetails('profile'))
-        // dispatch(listMyOrders())
+        dispatch(listMyOrders())
       } else {
         setName(user.name)
         setEmail(user.email)
@@ -117,7 +117,7 @@ const ProfileScreen = ({ location, history }) => {
       </Col>
       <Col md={9}>
         <h2>My Orders</h2>
-        {/* {loadingOrders ? (
+        {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
@@ -164,7 +164,7 @@ const ProfileScreen = ({ location, history }) => {
               ))}
             </tbody>
           </Table>
-        )} */}
+        )}
       </Col>
     </Row>
   )
