@@ -1,6 +1,7 @@
 import { React, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -10,18 +11,20 @@ const HomeScreen = () => {
   // const [products, setProducts] = useState([]);
 
   const dispatch = useDispatch();
+  const params = useParams()
+  const keyword = params.keyword
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts(keyword));
     // const fetchProducts = async () => {
     //   const { data } = await axios.get("/api/products");
     //   setProducts(data);
     // };
     // fetchProducts();
-  }, [dispatch]);
+  }, [dispatch, keyword]);
 
   return (
     <>
