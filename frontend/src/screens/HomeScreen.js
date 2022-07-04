@@ -7,10 +7,9 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
 import Paginate from "../components/Paginate";
+import Meta from "../components/Meta";
 
 const HomeScreen = () => {
-  // const [products, setProducts] = useState([]);
-
   const dispatch = useDispatch();
   const params = useParams();
   const keyword = params.keyword;
@@ -30,6 +29,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      <Meta />
       <h1>Latest Products</h1>
 
       {loading ? (

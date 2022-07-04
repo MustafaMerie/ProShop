@@ -15,6 +15,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails, createProductReview } from "../actions/productActions";
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import Meta from "../components/Meta";
 
 const ProductScreen = () => {
 
@@ -74,7 +75,7 @@ const ProductScreen = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          {" "}
+          <Meta title={product.name} />
           <Link className="btn btn-light my-3" to="/">
             Go Back
           </Link>
